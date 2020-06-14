@@ -1,0 +1,36 @@
+Home
+	Header
+	sticky post
+	recent post
+	random post
+	newsletter
+	footer
+		about
+		menu/links
+		social menu
+About
+	Banner
+	Section
+	Team
+	Section
+Contact
+	Banner
+	Contact Form
+	Contact Info
+Category
+	Category Info
+	Posts
+	Pagination
+Single Blog Page
+	Banner
+	Blog Info
+	Sidebar
+Key Component
+	Category
+	Tag
+	Post
+	Comment
+	Newsletter
+	Pagination
+	Menu
+	
