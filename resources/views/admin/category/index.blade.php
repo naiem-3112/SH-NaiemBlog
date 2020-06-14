@@ -42,6 +42,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @if($categories->count())
                                 @foreach($categories as $key => $category)
                                     <tr>
                                         <td>{{$key+1}}</td>
@@ -60,6 +61,11 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                                @else
+                                <td colspan="5">
+                                    <p style="text-align: center">No categories available</p>
+                                </td>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

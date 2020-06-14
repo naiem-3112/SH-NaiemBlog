@@ -195,6 +195,29 @@
 
                         </ul>
                     </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="bg-red active nav-link">
+                            <i class="fas fa-tag"></i>
+                            <p>Tags</p>
+                            <i class="right fas fa-angle-left"></i>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('tag.create') }}" class="nav-link">
+                                    <i class="fas fa-plus nav-icon"></i>
+                                    <p>Create</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('tag.index') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Tags</p>
+                                </a>
+
+                            </li>
+
+                        </ul>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

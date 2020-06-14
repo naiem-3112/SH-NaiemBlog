@@ -5,14 +5,14 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Create Category</h1>
+                    <h1 class="m-0 text-dark">Create Tag</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active"><a href="{{ route('category.index') }}">Category List</a>
+                        <li class="breadcrumb-item active"><a href="{{ route('tag.index') }}">Tag List</a>
                         </li>
-                        <li class="breadcrumb-item active">Create Category</li>
+                        <li class="breadcrumb-item active">Create Tag</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -27,18 +27,18 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="card-title">Create Category</h3>
-                                <a href="{{ route('category.index') }}" class="btn btn-primary">All Category</a>
+                                <h3 class="card-title">Create Tag</h3>
+                                <a href="{{ route('tag.index') }}" class="btn btn-primary">All Tag</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-0">
                             <div class="col-12 col-lg-6 offset-lg-3 col-md-8 offset-md-2 ">
-                                <form action="{{ route('category.store') }}" method="post">
+                                <form action="{{ route('tag.store') }}" method="post">
                                     @csrf
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="name">Category Name</label>
+                                            <label for="name">Tag Name</label>
                                             <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
                                             @error('name')
                                             <div class="alert alert-danger mt-2 mb-2">{{ $message }}</div>
