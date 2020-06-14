@@ -27,5 +27,5 @@ Route::get('/post', function(){
     return view('front_temp.post');
 })->name('post');
 Route::get('/admin', function(){
-    return view('layouts.back_temp');
+    return view('dashboard.index');
 })->name('admin');
