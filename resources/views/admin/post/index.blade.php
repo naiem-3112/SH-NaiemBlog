@@ -74,7 +74,7 @@
                                     </tr>
                                 @endforeach
                                 @else
-                                    <td colspan="6">
+                                    <td colspan="7">
                                         <p style="text-align: center;">No post available</p>
                                     </td>
                                     @endif
