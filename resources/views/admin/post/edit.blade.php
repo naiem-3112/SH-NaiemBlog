@@ -77,6 +77,22 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
+                                    <label for="tags">Tags</label>
+                                    @foreach($tags as $tag)
+                                        <div class="custom-control custom-checkbox">
+                                            <input class="custom-control-input" name="tags[]" type="checkbox" id="tag{{ $tag->id }}" value="{{ $tag->id }}"
+                                               @foreach($post->tags as $post_tag)
+                                               @if($post_tag->id == $tag->id)
+                                                   checked
+                                                @endif
+                                                @endforeach
+                                            >
+                                            <label for="tag{{ $tag->id }}" class="custom-control-label">{{ $tag->name }}</label>
+
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <div class="form-group">
                                     <label for="description">Description</label>
                                     <textarea name="description" id="description" rows="4" class="form-control">{{ $post->description }}</textarea>
                                     @error('description')

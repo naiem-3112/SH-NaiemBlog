@@ -38,6 +38,7 @@
                                     <th>Title</th>
                                     <th>Image</th>
                                     <th>Category</th>
+                                    <th>Tags</th>
                                     <th>Author</th>
                                     <th>Action</th>
                                 </tr>
@@ -55,6 +56,11 @@
                                         </td>
                                         <td>{{$post->user->name}}</td>
                                         <td>{{$post->category->name}}</td>
+                                        <td>
+                                            @foreach($post->tags as $tag)
+                                              <span class="badge badge-primary">{{ $tag->name }}</span>
+                                            @endforeach
+                                        </td>
                                         <td>
                                                 <a href="{{ route('post.show', $post->id) }}" class="btn btn-xs btn-success"><i class="fas fa-eye"></i></a>
                                                 <a href="{{ route('post.edit', $post->id) }}" class="btn btn-xs btn-warning"><i class="fas fa-edit"></i></a>
