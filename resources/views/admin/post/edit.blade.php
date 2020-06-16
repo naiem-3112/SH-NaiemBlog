@@ -5,14 +5,14 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Edit Tag</h1>
+                    <h1 class="m-0 text-dark">Edit Post</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active"><a href="{{ route('tag.index') }}">Tag List</a>
+                        <li class="breadcrumb-item active"><a href="{{ route('post.index') }}">Post List</a>
                         </li>
-                        <li class="breadcrumb-item active">Edit Tag</li>
+                        <li class="breadcrumb-item active">Edit Post</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -27,39 +27,70 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="card-title">Edit Tag - {{ $tag->name }}</h3>
-                                <a href="{{ route('tag.index') }}" class="btn btn-primary">All Tag</a>
+                                <h3 class="card-title">Edit Post</h3>
+                                <a href="{{ route('post.index') }}" class="btn btn-primary">All Post</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body p-0">
-                            <div class="col-12 col-lg-6 offset-lg-3 col-md-8 offset-md-2 ">
-                                <form action="{{ route('tag.update', [$tag->id]) }}" method="post">
-                                    @csrf
-                                    @method('PUT')
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="name">Tag Name</label>
-                                            <input type="text" class="form-control" name="name" id="name" value="{{ $tag->name }}">
-                                            @error('name')
-                                            <div class="alert alert-danger mt-2 mb-2">{{ $message }}</div>
-                                            @enderror
+                <div class="card-body p-0">
+                    <div class="col-12 col-lg-6 offset-lg-3 col-md-8 offset-md-2 ">
+                        <form action="{{ route('post.update', $post->id) }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="name">Post Title</label>
+                                    <input type="text" class="form-control" value="{{ $post->title }}" name="title" id="title">
+                                    @error('title')
+                                    <div class="alert alert-danger mt-2 mb-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="category">Post Category</label>
+                                    <select class="form-control" name="category_id" id="category_id">
+                                        <option style="display: none" selected>Select Category</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}" @if($category->id == $post->category->id) selected @endif>{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('category')
+                                    <div class="alert alert-danger mt-2 mb-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <label for="image">Image</label>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" name="image" id="image">
+                                                <label class="custom-file-label" for="image">Choose file</label>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="description">Description</label>
-                                            <textarea name="description" id="description" rows="4" class="form-control">{{ $tag->description }}</textarea>
-                                            @error('description')
-                                            <div class="alert alert-danger mt-2 mb-2">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        <div class="card-footer">
-                                            <button type="submit" class="btn btn-lg btn-primary">Update</button>
+                                        <div class="col-4">
+                                            <div style="max-height: 200px; max-width: 200px;">
+                                                <img src="{{ asset('back_temp/dist/postImages/'. $post->image) }}" class="img-fluid" alt="Post Image">
+                                            </div>
                                         </div>
                                     </div>
-                                </form>
+
+                                    @error('image')
+                                    <div class="alert alert-danger mt-2 mb-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <textarea name="description" id="description" rows="4" class="form-control">{{ $post->description }}</textarea>
+                                    @error('description')
+                                    <div class="alert alert-danger mt-2 mb-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+                                </div>
                             </div>
-                        </div>
-                        <!-- /.card-body -->
+                        </form>
+                    </div>
+                </div>
+                <!-- /.card-body -->
                     </div>
                 </div>
             </div>

@@ -53,8 +53,8 @@
                                                 <img src="{{ asset('back_temp/dist/postImages/'.$post->image) }}" class="img-fluid" alt="">
                                             </div>
                                         </td>
-                                        <td>{{$post->user_id}}</td>
-                                        <td>{{$post->category_id}}</td>
+                                        <td>{{$post->user->name}}</td>
+                                        <td>{{$post->category->name}}</td>
                                         <td>
                                                 <a href="{{ route('post.show', $post->id) }}" class="btn btn-xs btn-success"><i class="fas fa-eye"></i></a>
                                                 <a href="{{ route('post.edit', $post->id) }}" class="btn btn-xs btn-warning"><i class="fas fa-edit"></i></a>
