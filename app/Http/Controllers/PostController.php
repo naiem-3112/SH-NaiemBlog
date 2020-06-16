@@ -59,7 +59,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-
+        return view('admin.post.show', compact('post'));
     }
 
     public function edit(Post $post)
@@ -89,7 +89,6 @@ class PostController extends Controller
             $imageUniqueName = time() . '.' . $image->extension();
             $image->move(public_path('back_temp/dist/postImages'), $imageUniqueName);
             $post->image = $imageUniqueName;
-
         }
 
             $post->save();

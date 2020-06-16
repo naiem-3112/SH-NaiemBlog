@@ -33,7 +33,7 @@
                         </div>
                         <!-- /.card-header -->
             <div class="card-body p-0">
-                <div class="col-12 col-lg-6 offset-lg-3 col-md-8 offset-md-2 ">
+                <div class="col-12 col-lg-8 offset-lg-2 col-md-8 offset-md-2 ">
                     <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
@@ -67,13 +67,15 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="tags">Tags</label>
-                            @foreach($tags as $tag)
-                                <div class="custom-control custom-checkbox">
-                                    <input class="custom-control-input" name="tags[]" type="checkbox" id="tag{{ $tag->id }}" value="{{ $tag->id }}">
-                                    <label for="tag{{ $tag->id }}" class="custom-control-label">{{ $tag->name }}</label>
+                                <label for="tags">Choose Post Tags</label>
+                                <div class="d-flex flex-wrap">
+                                    @foreach($tags as $tag)
+                                        <div class="custom-control custom-checkbox" style="margin-right: 10px">
+                                            <input class="custom-control-input" name="tags[]" type="checkbox" id="tag{{ $tag->id }}" value="{{ $tag->id }}">
+                                            <label for="tag{{ $tag->id }}" class="custom-control-label">{{ $tag->name }}</label>
+                                        </div>
+                                    @endforeach
                                 </div>
-                                @endforeach
                             </div>
                             <div class="form-group">
                                 <label for="description">Description</label>
@@ -96,4 +98,19 @@
         </div>
     </div>
 
+@endsection
+
+@section('style')
+    <link rel="stylesheet" href="{{ asset('css/summernote-bs4.min.css') }}">
+@endsection
+
+@section('script')
+    <script src="{{ asset('js/summernote-bs4.min.js') }}"></script>
+    <script>
+        $('#description').summernote({
+            placeholder: 'Post Description',
+            tabsize: 2,
+            height: 300
+        });
+    </script>
 @endsection

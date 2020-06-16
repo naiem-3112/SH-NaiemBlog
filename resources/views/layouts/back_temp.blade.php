@@ -14,6 +14,7 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('back_temp/dist/css/toastr.css') }}">
+    @yield('style')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -303,5 +304,6 @@
     })
 
 </script>
+@yield('script')
 </body>
 </html>
