@@ -49,7 +49,7 @@
                                         <td>{{$post->id}}</td>
                                         <td>{{$post->title}}</td>
                                         <td>
-                                            <div style="max-width: 70px; max-height: 70px">
+                                            <div style="max-width: 70px; max-height: 70px; overflow: hidden">
                                                 <img src="{{ asset('back_temp/dist/postImages/'.$post->image) }}" class="img-fluid" alt="">
                                             </div>
                                         </td>

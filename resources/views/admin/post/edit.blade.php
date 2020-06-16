@@ -36,6 +36,7 @@
                     <div class="col-12 col-lg-6 offset-lg-3 col-md-8 offset-md-2 ">
                         <form action="{{ route('post.update', $post->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Post Title</label>
@@ -66,12 +67,11 @@
                                             </div>
                                         </div>
                                         <div class="col-4">
-                                            <div style="max-height: 200px; max-width: 200px;">
+                                            <div style="max-height: 200px; max-width: 200px; overflow: hidden">
                                                 <img src="{{ asset('back_temp/dist/postImages/'. $post->image) }}" class="img-fluid" alt="Post Image">
                                             </div>
                                         </div>
                                     </div>
-
                                     @error('image')
                                     <div class="alert alert-danger mt-2 mb-2">{{ $message }}</div>
                                     @enderror
@@ -84,7 +84,7 @@
                                     @enderror
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-lg btn-primary">Update</button>
                                 </div>
                             </div>
                         </form>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Session;
 use Carbon\Carbon;
@@ -33,7 +34,7 @@ class PostController extends Controller
         ]);
 
 
-        if ($request->has('image')) {
+        if ($request->hasFile('image')) {
             $image = $request->image;
             $imageUniqueName = time() . '.' . $image->extension();
             $image->move(public_path('back_temp/dist/postImages'), $imageUniqueName);
@@ -65,11 +66,39 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
-        //
+        $this->validate($request, [
+            'title' => "required|unique:posts,title, $post->id",
+            'description' => 'required',
+            'category_id' => 'required'
+        ]);
+
+            $post->title =  $request->title;
+            $post->slug = Str::slug($request->title, '-');
+            $post->description = $request->description;
+            $post->category_id = $request->category_id;
+
+        if ($request->hasFile('image')) {
+            $image = $request->image;
+            $imageUniqueName = time() . '.' . $image->extension();
+            $image->move(public_path('back_temp/dist/postImages'), $imageUniqueName);
+            $post->image = $imageUniqueName;
+
+        }
+
+            $post->save();
+
+            Session::flash('success', 'Post updated Successfully');
+            return redirect()->back();
+
     }
 
     public function destroy(Post $post)
     {
-        //
+        if($post){
+            file::delete(public_path('back_temp/dist/postImages/'.$post->image));
+            $post->delete();
+            Session::flash('success', 'post deleted successfully');
+        }
+        return redirect()->back();
     }
 }
