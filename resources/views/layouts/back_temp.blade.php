@@ -218,6 +218,29 @@
 
                         </ul>
                     </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="bg-red active nav-link">
+                            <i class="fas fa-tag"></i>
+                            <p>Posts</p>
+                            <i class="right fas fa-angle-left"></i>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('post.create') }}" class="nav-link">
+                                    <i class="fas fa-plus nav-icon"></i>
+                                    <p>Create</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('post.index') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Posts</p>
+                                </a>
+
+                            </li>
+
+                        </ul>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -261,17 +284,23 @@
 <script src="{{ asset('back_temp/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('back_temp/dist/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('back_temp/dist/js/custom-file-input.js') }}"></script>
 <script src="{{ asset('back_temp/dist/js/toastr.js') }}"></script>
 <script>
     @if(Session::has('success'))
     toastr.success("{{ Session::get('success') }}")
-    @endif
-    @if(Session::has('warning'))
+
+    @elseif(Session::has('warning'))
     toastr.warning("{{ Session::get('warning') }}")
-    @endif
-    @if(Session::has('error'))
+
+    @elseif(Session::has('error'))
     toastr.error("{{ Session::get('error') }}")
     @endif
+
+    //bs-custom-file-input
+    $(document).ready(function () {
+        bsCustomFileInput.init()
+    })
 
 </script>
 </body>
