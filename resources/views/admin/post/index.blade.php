@@ -40,7 +40,7 @@
                                     <th>Category</th>
                                     <th>Tags</th>
                                     <th>Author</th>
-                                    <th>Action</th>
+                                    <th style="width: 20%">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -83,6 +83,8 @@
                         </div>
                         <!-- /.card-body -->
                     </div>
+                    {{ $posts->links() }}
+
                 </div>
             </div>
         </div>
