@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('front_temp') }}/css/style.css">
   </head>
   <body>
-  
+
   <div class="site-wrap">
 
     <div class="site-mobile-menu">
@@ -31,11 +31,11 @@
       </div>
       <div class="site-mobile-menu-body"></div>
     </div>
-    
+{{--    header--}}
     <header class="site-navbar" role="banner">
       <div class="container-fluid">
         <div class="row align-items-center">
-          
+
           <div class="col-12 search-form-wrap js-search-form">
             <form method="get" action="#">
               <input type="text" id="s" class="form-control" placeholder="Search...">
@@ -63,9 +63,9 @@
 
       </div>
     </header>
-    
-    @yield('content')
 
+    @yield('content')
+{{--footer--}}
     <div class="site-footer">
       <div class="container">
         <div class="row mb-5">
@@ -89,7 +89,7 @@
             </ul>
           </div>
           <div class="col-md-4">
-            
+
 
             <div>
               <h3 class="footer-heading mb-4">Connect With Us</h3>
@@ -114,7 +114,7 @@
         </div>
       </div>
     </div>
-    
+
   </div>
 
   <script src="{{ asset('front_temp') }}/js/jquery-3.3.1.min.js"></script>

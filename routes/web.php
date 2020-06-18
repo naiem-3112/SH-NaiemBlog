@@ -4,41 +4,17 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
-
-
-Route::get('/', function () {
-    return view('front_temp.home');
-})->name('home');
-
-Route::get('/about', function () {
-    return view('front_temp.about');
-})->name('about');
-
-Route::get('/category', function () {
-    return view('front_temp.category');
-})->name('category');
-
-Route::get('/contact', function () {
-    return view('front_temp.contact');
-})->name('contact');
-
-Route::get('/post', function () {
-    return view('front_temp.post');
-})->name('post');
-
+//FrontEnd Route
+Route::get('/', 'FrontendController@home')->name('home');
+Route::get('/about', 'FrontendController@about')->name('about');
+Route::get('/category', 'FrontendController@category')->name('category');
+Route::get('/contact', 'FrontendController@contact')->name('contact');
+Route::get('/post', 'FrontendController@post')->name('post');
 
 //admin panel route
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard.index');
-    })->name('dashboard');
-
-    Route::resource('category', 'CategoryController');
-
+    Route::resource('category', 'CategoryCon troller');
     Route::resource('tag', 'TagController');
-
     Route::resource('post', 'PostController');
-
 });
 
