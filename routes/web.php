@@ -9,11 +9,11 @@ Route::get('/', 'FrontendController@home')->name('home');
 Route::get('/about', 'FrontendController@about')->name('about');
 Route::get('/category', 'FrontendController@category')->name('category');
 Route::get('/contact', 'FrontendController@contact')->name('contact');
-Route::get('/post', 'FrontendController@post')->name('post');
+Route::get('/post/{slug}', 'FrontendController@post')->name('post');
 
 //admin panel route
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
-    Route::resource('category', 'CategoryCon troller');
+    Route::resource('category', 'CategoryController');
     Route::resource('tag', 'TagController');
     Route::resource('post', 'PostController');
 });

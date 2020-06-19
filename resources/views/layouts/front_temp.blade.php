@@ -52,7 +52,7 @@
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
                 <li><a href="{{ route('home') }}">Home</a></li>
                 <li><a href="{{ route('about') }}">About</a></li>
-                <li><a href="{{ route('post') }}">Post</a></li>
+{{--                <li><a href="{{ route('post') }}">Post</a></li>--}}
                 <li><a href=" {{ route('category') }}">Category</a></li>
                 <li><a href="{{ route('contact') }}">Contact</a></li>
                 <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>

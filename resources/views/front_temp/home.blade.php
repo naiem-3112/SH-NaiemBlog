@@ -5,14 +5,14 @@
       <div class="row align-items-stretch retro-layout-2">
         <div class="col-md-4">
           <a href="single.html" class="h-entry mb-30 v-height gradient" style="background-image: url('{{ asset('front_temp') }}/images/img_1.jpg');">
-            
+
             <div class="text">
               <h2>The AI magically removes moving objects from videos.</h2>
               <span class="date">July 19, 2019</span>
             </div>
           </a>
           <a href="single.html" class="h-entry v-height gradient" style="background-image: url('{{ asset('front_temp') }}/images/img_2.jpg');">
-            
+
             <div class="text">
               <h2>The AI magically removes moving objects from videos.</h2>
               <span class="date">July 19, 2019</span>
@@ -21,7 +21,7 @@
         </div>
         <div class="col-md-4">
           <a href="single.html" class="h-entry img-5 h-100 gradient" style="background-image: url('{{ asset('front_temp') }}/images/img_v_1.jpg');">
-            
+
             <div class="text">
               <div class="post-categories mb-3">
                 <span class="post-category bg-danger">Travel</span>
@@ -34,14 +34,14 @@
         </div>
         <div class="col-md-4">
           <a href="single.html" class="h-entry mb-30 v-height gradient" style="background-image: url('{{ asset('front_temp') }}/images/img_3.jpg');">
-            
+
             <div class="text">
               <h2>The 20 Biggest Fintech Companies In America 2019</h2>
               <span class="date">July 19, 2019</span>
             </div>
           </a>
           <a href="single.html" class="h-entry v-height gradient" style="background-image: url('{{ asset('front_temp') }}/images/img_4.jpg');">
-            
+
             <div class="text">
               <h2>The 20 Biggest Fintech Companies In America 2019</h2>
               <span class="date">July 19, 2019</span>
@@ -51,7 +51,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="site-section">
     <div class="container">
       <div class="row mb-5">
@@ -60,174 +60,27 @@
         </div>
       </div>
       <div></div>
+
       <div class="row">
+          @foreach($recentPosts as $recentPost)
         <div class="col-lg-4 mb-4">
           <div class="entry2">
-            <a href="single.html"><img src="{{ asset('front_temp') }}/images/img_1.jpg" alt="Image" class="img-fluid rounded"></a>
+            <a href="{{ route('post', ['slug' => $recentPost->slug]) }}"><img src="{{ $recentPost->image }}" alt="Image" class="img-fluid rounded"></a>
             <div class="excerpt">
-            <span class="post-category text-white bg-secondary mb-3">Politics</span>
-  
-            <h2><a href="single.html">The AI magically removes moving objects from videos.</a></h2>
+            <span class="post-category text-white bg-secondary mb-3">{{ $recentPost->category->name }}</span>
+
+            <h2><a href="{{ route('post', ['slug' => $recentPost->slug]) }}">{{ $recentPost->title }}</a></h2>
             <div class="post-meta align-items-center text-left clearfix">
               <figure class="author-figure mb-0 mr-3 float-left"><img src="{{ asset('front_temp') }}/images/person_1.jpg" alt="Image" class="img-fluid"></figure>
-              <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-              <span>&nbsp;-&nbsp; July 19, 2019</span>
+              <span class="d-inline-block mt-1">By <a href="#">{{ $recentPost->user->name }}</a></span>
+              <span>&nbsp;-&nbsp; {{ $recentPost->created_at->format('M d, Y') }}</span>
             </div>
-            
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
-              <p><a href="#">Read More</a></p>
+                <p>{{ Str::limit($recentPost->description, 100) }}</p>
+              <p><a href="{{ route('post', ['slug' => $recentPost->slug]) }}">Read More</a></p>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 mb-4">
-          <div class="entry2">
-            <a href="single.html"><img src="{{ asset('front_temp') }}/images/img_2.jpg" alt="Image" class="img-fluid rounded"></a>
-            <div class="excerpt">
-            <span class="post-category text-white bg-success mb-3">Nature</span>
-  
-            <h2><a href="single.html">The AI magically removes moving objects from videos.</a></h2>
-            <div class="post-meta align-items-center text-left clearfix">
-              <figure class="author-figure mb-0 mr-3 float-left"><img src="{{ asset('front_temp') }}/images/person_1.jpg" alt="Image" class="img-fluid"></figure>
-              <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-              <span>&nbsp;-&nbsp; July 19, 2019</span>
-            </div>
-            
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
-              <p><a href="#">Read More</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-          <div class="entry2">
-            <a href="single.html"><img src="{{ asset('front_temp') }}/images/img_3.jpg" alt="Image" class="img-fluid rounded"></a>
-            <div class="excerpt">
-            <span class="post-category text-white bg-warning mb-3">Travel</span>
-  
-            <h2><a href="single.html">The AI magically removes moving objects from videos.</a></h2>
-            <div class="post-meta align-items-center text-left clearfix">
-              <figure class="author-figure mb-0 mr-3 float-left"><img src="{{ asset('front_temp') }}/images/person_1.jpg" alt="Image" class="img-fluid"></figure>
-              <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-              <span>&nbsp;-&nbsp; July 19, 2019</span>
-            </div>
-            
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
-              <p><a href="#">Read More</a></p>
-            </div>
-          </div>
-        </div>
-  
-  
-        <div class="col-lg-4 mb-4">
-          <div class="entry2">
-            <a href="single.html"><img src="{{ asset('front_temp') }}/images/img_1.jpg" alt="Image" class="img-fluid rounded"></a>
-            <div class="excerpt">
-            <span class="post-category text-white bg-secondary mb-3">Politics</span>
-  
-            <h2><a href="single.html">The AI magically removes moving objects from videos.</a></h2>
-            <div class="post-meta align-items-center text-left clearfix">
-              <figure class="author-figure mb-0 mr-3 float-left"><img src="{{ asset('front_temp') }}/images/person_1.jpg" alt="Image" class="img-fluid"></figure>
-              <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-              <span>&nbsp;-&nbsp; July 19, 2019</span>
-            </div>
-            
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
-              <p><a href="#">Read More</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-          <div class="entry2">
-            <a href="single.html"><img src="{{ asset('front_temp') }}/images/img_2.jpg" alt="Image" class="img-fluid rounded"></a>
-            <div class="excerpt">
-            <span class="post-category text-white bg-success mb-3">Nature</span>
-  
-            <h2><a href="single.html">The AI magically removes moving objects from videos.</a></h2>
-            <div class="post-meta align-items-center text-left clearfix">
-              <figure class="author-figure mb-0 mr-3 float-left"><img src="{{ asset('front_temp') }}/images/person_1.jpg" alt="Image" class="img-fluid"></figure>
-              <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-              <span>&nbsp;-&nbsp; July 19, 2019</span>
-            </div>
-            
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
-              <p><a href="#">Read More</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-          <div class="entry2">
-            <a href="single.html"><img src="{{ asset('front_temp') }}/images/img_4.jpg" alt="Image" class="img-fluid rounded"></a>
-            <div class="excerpt">
-            <span class="post-category text-white bg-danger mb-3">Sports</span>
-  
-            <h2><a href="single.html">The AI magically removes moving objects from videos.</a></h2>
-            <div class="post-meta align-items-center text-left clearfix">
-              <figure class="author-figure mb-0 mr-3 float-left"><img src="{{ asset('front_temp') }}/images/person_1.jpg" alt="Image" class="img-fluid"></figure>
-              <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-              <span>&nbsp;-&nbsp; July 19, 2019</span>
-            </div>
-            
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
-              <p><a href="#">Read More</a></p>
-            </div>
-          </div>
-        </div>
-  
-  
-        <div class="col-lg-4 mb-4">
-          <div class="entry2">
-            <a href="single.html"><img src="{{ asset('front_temp') }}/images/img_1.jpg" alt="Image" class="img-fluid rounded"></a>
-            <div class="excerpt">
-            <span class="post-category text-white bg-success mb-3">Nature</span>
-  
-            <h2><a href="single.html">The AI magically removes moving objects from videos.</a></h2>
-            <div class="post-meta align-items-center text-left clearfix">
-              <figure class="author-figure mb-0 mr-3 float-left"><img src="{{ asset('front_temp') }}/images/person_1.jpg" alt="Image" class="img-fluid"></figure>
-              <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-              <span>&nbsp;-&nbsp; July 19, 2019</span>
-            </div>
-            
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
-              <p><a href="#">Read More</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-          <div class="entry2">
-            <a href="single.html"><img src="{{ asset('front_temp') }}/images/img_2.jpg" alt="Image" class="img-fluid rounded"></a>
-            <div class="excerpt">
-            <span class="post-category text-white bg-danger mb-3">Sports</span>
-            <span class="post-category text-white bg-secondary mb-3">Tech</span>
-  
-            <h2><a href="single.html">The AI magically removes moving objects from videos.</a></h2>
-            <div class="post-meta align-items-center text-left clearfix">
-              <figure class="author-figure mb-0 mr-3 float-left"><img src="{{ asset('front_temp') }}/images/person_1.jpg" alt="Image" class="img-fluid"></figure>
-              <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-              <span>&nbsp;-&nbsp; July 19, 2019</span>
-            </div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
-              <p><a href="#">Read More</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-          <div class="entry2">
-            <a href="single.html"><img src="{{ asset('front_temp') }}/images/img_4.jpg" alt="Image" class="img-fluid rounded"></a>
-            <div class="excerpt">
-            <span class="post-category text-white bg-danger mb-3">Sports</span>
-            <span class="post-category text-white bg-warning mb-3">Lifestyle</span>
-  
-            <h2><a href="single.html">The AI magically removes moving objects from videos.</a></h2>
-            <div class="post-meta align-items-center text-left clearfix">
-              <figure class="author-figure mb-0 mr-3 float-left"><img src="{{ asset('front_temp') }}/images/person_1.jpg" alt="Image" class="img-fluid"></figure>
-              <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-              <span>&nbsp;-&nbsp; July 19, 2019</span>
-            </div>
-            
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
-              <p><a href="#">Read More</a></p>
-            </div>
-          </div>
-        </div>
+          @endforeach
       </div>
       <div class="row text-center pt-5 border-top">
         <div class="col-md-12">
@@ -243,12 +96,12 @@
       </div>
     </div>
   </div>
-  
+
   <div class="site-section bg-light">
     <div class="container">
-  
+
       <div class="row align-items-stretch retro-layout">
-        
+
         <div class="col-md-5 order-md-2">
           <a href="single.html" class="hentry img-1 h-100 gradient" style="background-image: url('{{ asset('front_temp') }}/images/img_4.jpg');">
             <span class="post-category text-white bg-danger">Travel</span>
@@ -258,9 +111,9 @@
             </div>
           </a>
         </div>
-  
+
         <div class="col-md-7">
-          
+
           <a href="single.html" class="hentry img-2 v-height mb30 gradient" style="background-image: url('{{ asset('front_temp') }}/images/img_1.jpg');">
             <span class="post-category text-white bg-success">Nature</span>
             <div class="text text-sm">
@@ -268,7 +121,7 @@
               <span>February 12, 2019</span>
             </div>
           </a>
-          
+
           <div class="two-col d-block d-md-flex">
             <a href="single.html" class="hentry v-height img-2 gradient" style="background-image: url('{{ asset('front_temp') }}/images/img_2.jpg');">
               <span class="post-category text-white bg-primary">Sports</span>
@@ -284,15 +137,15 @@
                 <span>February 12, 2019</span>
               </div>
             </a>
-          </div>  
-          
+          </div>
+
         </div>
       </div>
-  
+
     </div>
   </div>
-  
-  
+
+
   <div class="site-section bg-lightx">
     <div class="container">
       <div class="row justify-content-center text-center">
@@ -309,5 +162,5 @@
       </div>
     </div>
   </div>
-  
+
 @endsection

@@ -1,8 +1,6 @@
 @extends('layouts.front_temp')
 @section('content')
-    
-    
-    
+
     <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('{{ asset('front_temp') }}/images/img_4.jpg');">
       <div class="container">
         <div class="row same-height justify-content-center">
@@ -15,8 +13,8 @@
         </div>
       </div>
     </div>
-    
-    
+
+
     <div class="site-section bg-light">
       <div class="container">
         <div class="row">
@@ -83,7 +81,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="site-section bg-light">
       <div class="container">
         <div class="row">
@@ -93,7 +91,7 @@
           <div class="col-md-5 ml-auto">
             <h2>Learn From Us</h2>
             <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea voluptate odit corrupti vitae cupiditate explicabo, soluta quibusdam necessitatibus, provident reprehenderit, dolorem saepe non eligendi possimus autem repellendus nesciunt, est deleniti libero recusandae officiis. Voluptatibus quisquam voluptatum expedita recusandae architecto quibusdam.</p>
-            
+
             <ul class="ul-check list-unstyled success">
               <li>Onsectetur adipisicing elit</li>
               <li>Dolorem saepe non eligendi possimus</li>

@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     public function home()
     {
-        return view('front_temp.home');
+        $posts = Post::orderBy('created_at', 'DESC')->take(5)->get();
+        $recentPosts = Post::with('category', 'user')->orderBy('created_at', 'DESC')->paginate(9);
+        return view('front_temp.home', compact('posts', 'recentPosts'));
     }
 
     public function about()
@@ -26,9 +29,16 @@ class FrontendController extends Controller
         return view('front_temp.contact');
     }
 
-    public function post()
+
+    public function post($slug)
     {
-        return view('front_temp.post');
+        $post = Post::with('category')->where('slug', $slug)->first();
+        if($post){
+            return view('front_temp.post', compact('post'));
+        }
+        else{
+            return redirect('/');
+        }
     }
 
 }
