@@ -22,16 +22,15 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:255',
-            'email' => 'required|unique:users, email',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8'
         ]);
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'description' => $request->description,
-            'image' => $request->image,
-            'password' => $request->password
+            'password' => bcrypt($request->password),
         ]);
         Session::flash('success', 'user info stored successfully');
         return redirect()->route('user.index');
@@ -51,15 +50,14 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'email' => 'required|unique:users, email',
-            'password' => 'required|min:8'
+            'email' => "required|unique:users,email, $user->id",
+            'password' => 'sometimes|min:8'
         ]);
 
         $user->name = $request->name;
         $user->email = $request->email;
         $user->description = $request->description;
-        $user->image = $request->image;
-        $user->password = $request->password;
+        $user->password = bcrypt($request->password);
         $user->save();
 
         Session::flash('success', 'user info updated successfully');
