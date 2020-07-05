@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Tag List</h1>
+                    <h1 class="m-0 text-dark">User List</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Tag</li>
+                        <li class="breadcrumb-item active">User</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -25,8 +25,8 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="card-title">Tag List</h3>
-                                <a href="{{ route('tag.create') }}" class="btn btn-primary">Create Tag</a>
+                                <h3 class="card-title">User List</h3>
+                                <a href="{{ route('user.create') }}" class="btn btn-primary">Create User</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -36,24 +36,24 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Slug</th>
-                                    <th>Post Count</th>
+                                    <th>Email</th>
+                                    <th>Description</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if($tags->count())
-                                @foreach($tags as $key => $tag)
+                                @if($users->count())
+                                @foreach($users as $key => $user)
                                     <tr>
                                         <td>{{$key+1}}</td>
-                                        <td>{{$tag->name}}</td>
-                                        <td>{{$tag->slug}}</td>
-                                        <td>{{$tag->id}}</td>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->email}}</td>
+                                        <td>{{$user->description}}</td>
                                         <td>
-                                                <a href="{{ route('tag.show', $tag->id) }}" class="btn btn-xs btn-success"><i class="fas fa-eye"></i></a>
-                                                <a href="{{ route('tag.edit', $tag->id) }}" class="btn btn-xs btn-warning"><i class="fas fa-edit"></i></a>
+                                                <a href="{{ route('user.show', $user->id) }}" class="btn btn-xs btn-success"><i class="fas fa-eye"></i></a>
+                                                <a href="{{ route('user.edit', $user->id) }}" class="btn btn-xs btn-warning"><i class="fas fa-edit"></i></a>
 
-                                            <form action="{{ route('tag.destroy', $tag->id) }}" method="post" style="display: inline-block">
+                                            <form action="{{ route('user.destroy', $user->id) }}" method="post" style="display: inline-block">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button onclick=" alert('Are You Sure TO DELETE!')" class="btn btn-xs btn-danger" type="submit"><i class="fas fa-trash"></i></button>
@@ -63,7 +63,7 @@
                                 @endforeach
                                 @else
                                     <td colspan="5">
-                                        <p style="text-align: center;">No tag available</p>
+                                        <p style="text-align: center;">No user available</p>
                                     </td>
                                     @endif
                                 </tbody>
@@ -71,6 +71,7 @@
                         </div>
                         <!-- /.card-body -->
                     </div>
+                    {{ $users->links() }}
                 </div>
             </div>
         </div>

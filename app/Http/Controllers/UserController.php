@@ -10,13 +10,13 @@ class UserController extends Controller
 {
     public function index()
     {
-        $user = User::latest()->paginate(20);
-        return view('user.index', compact('user'));
+        $users = User::latest()->paginate(10);
+        return view('admin.user.index', compact('users'));
     }
 
     public function create()
     {
-        return view('user.create');
+        return view('admin.user.create');
     }
 
     public function store(Request $request)
@@ -26,12 +26,14 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8'
         ]);
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'description' => $request->description,
-            'password' => bcrypt($request->password),
-        ]);
+
+        $user = new User();   
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->description = $request->description;
+            $user->password = bcrypt($request->password);
+            $user->save();
+    
         Session::flash('success', 'user info stored successfully');
         return redirect()->route('user.index');
     }
@@ -43,7 +45,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('user.edit', compact('user'));
+        return view('admin.user.edit', compact('user'));
     }
 
     public function update(Request $request, User $user)

@@ -12,7 +12,7 @@ Route::get('/contact', 'FrontendController@contact')->name('contact');
 Route::get('/post/{slug}', 'FrontendController@post')->name('post');
 
 //admin panel route
-Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'admin'], function () {
     Route::resource('category', 'CategoryController');
     Route::resource('tag', 'TagController');
     Route::resource('post', 'PostController');
