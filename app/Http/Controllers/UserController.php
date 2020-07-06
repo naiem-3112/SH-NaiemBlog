@@ -61,19 +61,17 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->description = $request->description;
-        $user->password = bcrypt($request->password);
+
+        if($request->has('password')){
+            $user->password = bcrypt($request->password);
+        }
 
         if ($request->hasFile('image')) {
             $image = $request->image;
-            $filename = 'user'.time().'.png';
-            $path = public_path('back_temp/' . $filename);
-			Image::make($image->getRealPath())->resize(468, 249)->save($path);
-			$user->image = 'back_temp/'.$filename;
-            // $image = Image::make($request->image);
-            // $image->resize(121,116);
-            // $destinationPath = 'assets/back_temp/dist/img/user/';
-            // $image->save($destinationPath.$name);
-            // $user->image = $destinationPath.$name;
+            $filename = 'user-avatar'.time().'.png';
+            $path = public_path('back_temp/dist/' . $filename);
+			Image::make($image->getRealPath())->resize(600, 600)->save($path);
+			$user->image =$filename;
         }
         $user->save();
 
