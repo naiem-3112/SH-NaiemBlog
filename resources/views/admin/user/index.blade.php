@@ -35,9 +35,9 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Image</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Description</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -46,9 +46,13 @@
                                 @foreach($users as $key => $user)
                                     <tr>
                                         <td>{{$key+1}}</td>
+                                        <td>
+                                            <div style="width: 50px; height: 50px; overflow:hidden">
+                                                <img class="img-fluid" src="{{ asset('back_temp/dist/userImages/'. $user->image) }}" alt="">
+                                            </div>
+                                        </td>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
-                                        <td>{{$user->description}}</td>
                                         <td>
                                                 <a href="{{ route('user.show', $user->id) }}" class="btn btn-xs btn-success"><i class="fas fa-eye"></i></a>
                                                 <a href="{{ route('user.edit', $user->id) }}" class="btn btn-xs btn-warning"><i class="fas fa-edit"></i></a>

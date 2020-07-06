@@ -265,6 +265,15 @@
 
                         </ul>
                     </li>
+                    <li class="nav-header">Your Account</li>
+                    <li class="nav-item">
+                        <a href="{{ route('user.profile') }}" class="nav-link">
+                            <i class="far fa-user-circle nav-icon"></i>
+                            <p>Profile</p>
+                        </a>
+
+                    </li>
+
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

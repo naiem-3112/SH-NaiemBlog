@@ -54,6 +54,14 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
+                                            <label for="password">Password<small>(If you wat to change.)</small></label>
+                                            <input class="form-control" type="password" name="password" id="password"
+                                                placeholder="********">
+                                            @error('password')
+                                            <div class="alert alert-danger mt-2 mb-2">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
                                             <label for="description">Description</label>
                                             <textarea name="description" id="description" rows="4" class="form-control">{{ $user->description }}</textarea>
                                             @error('description')

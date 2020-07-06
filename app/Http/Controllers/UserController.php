@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Session;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+
 
 class UserController extends Controller
 {
@@ -43,6 +45,43 @@ class UserController extends Controller
         return view('user.show');
     }
 
+    public function profile(){
+        $user = auth()->user();
+        return view('admin.user.profile', compact('user'));
+    }
+
+    public function profile_update(Request $request){
+        $user = auth()->user();
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => "required|email|unique:users,email, $user->id",
+            'password' => 'sometimes|nullable|min:8',
+            'image'  => 'sometimes|nullable|image|max:2048',
+        ]);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->description = $request->description;
+        $user->password = bcrypt($request->password);
+
+        if ($request->hasFile('image')) {
+            $image = $request->image;
+            $filename = 'user'.time().'.png';
+            $path = public_path('back_temp/' . $filename);
+			Image::make($image->getRealPath())->resize(468, 249)->save($path);
+			$user->image = 'back_temp/'.$filename;
+            // $image = Image::make($request->image);
+            // $image->resize(121,116);
+            // $destinationPath = 'assets/back_temp/dist/img/user/';
+            // $image->save($destinationPath.$name);
+            // $user->image = $destinationPath.$name;
+        }
+        $user->save();
+
+    Session::flash('success', 'user profile updated successfully');
+    return redirect()->back();
+        
+    }
+
     public function edit(User $user)
     {
         return view('admin.user.edit', compact('user'));
@@ -53,7 +92,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'email' => "required|unique:users,email, $user->id",
-            'password' => 'sometimes|min:8'
+            'password' => 'sometimes|nullable|min:8'
         ]);
 
         $user->name = $request->name;
